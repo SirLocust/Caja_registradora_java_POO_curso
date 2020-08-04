@@ -1,6 +1,6 @@
 package team.ed.objects;
 
-public abstract class Product {
+public abstract class Product implements Cloneable {
 
     private String name;
     private int amount;
@@ -50,6 +50,10 @@ public abstract class Product {
     @Override
     public String toString(){
         return  this.name + " - " + this.amount + " - " + this.price;
+    }
+
+    public Product clone() throws CloneNotSupportedException{
+        return (Product) super.clone();
     }
 
 
