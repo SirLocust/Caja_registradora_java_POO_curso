@@ -98,6 +98,14 @@ public class View {
         System.out.println("\t\t\t4. Volver");
     }
 
+    public static  void showInvalidOption(){
+        System.out.println("Opcion No Valida");
+    }
+
+    public static void showThanks(){
+        System.out.println("Gracias por utilizar nuestra primera app");
+    }
+
 
 
 
