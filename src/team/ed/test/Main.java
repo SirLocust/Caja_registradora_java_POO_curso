@@ -1,12 +1,14 @@
 package team.ed.test;
 
-import team.ed.objects.Product;
-import team.ed.storage.DataBase;
+
+import team.ed.views.View;
 
 public class Main {
     public static void main(String ...args){
-        DataBase dataBase = new DataBase();
-        Product product = dataBase.getByIndex(0);
-        System.out.println(product);
+        View.showHeaderPrincipal();
+        View.showMenuPrincipal();
+        View.showGetOption();
+        int option = View.getOption();
+        System.out.println("la opcioon digitada fue " + option);
     }
 }
