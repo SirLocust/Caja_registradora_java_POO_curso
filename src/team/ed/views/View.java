@@ -1,5 +1,7 @@
 package team.ed.views;
 
+import team.ed.objects.Product;
+
 import java.util.Scanner;
 
 public class View {
@@ -106,7 +108,20 @@ public class View {
         System.out.println("Gracias por utilizar nuestra primera app");
     }
 
+    public static void showGetBack(String nameMoudlo){
+        System.out.println("\t\t\tSaliendo del modulo... " + nameMoudlo);
+    }
 
+
+    public  static void showAnyKey(){
+        System.out.println("Digite cualquier numero para continuar");
+    }
+
+    public static void showItemsStock(Product[] products){
+        for(Product product: products){
+            System.out.println("\t\t* "+product.getName()+"\t| "+product.getAmount()+"\t\t| "+product.getPrice()+"\t\t\t| "+product.getAmount()*product.getPrice()+"\t\t*");
+        }
+    }
 
 
 }

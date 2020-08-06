@@ -15,22 +15,23 @@ public class Register {
     }
 
     public void register(){
-        View.showHeaderPrincipal();
-        View.showMenuPrincipal();
-        View.showItemsMenu();
+
         int option;
         do {
+            View.showHeaderPrincipal();
+            View.showMenuPrincipal();
             View.showGetOption();
             option = View.getOption();
             switch (option){
                 case 1:
-                    View.showBuyHeader();
+                    this.buy();
                     break;
                 case 2:
                     View.showSaleHeader();
                     break;
                 case 3:
-                    View.showStockHeader();
+
+                    this.showStock();
                     break;
                 case 4:
                     View.showBuyListHeader();
@@ -40,43 +41,38 @@ public class Register {
                     break;
                 case 6:
                     View.showThanks();
+                    System.exit(0);
                     break;
                 default:
                     View.showInvalidOption();
             }
 
         }
-        while (option < 1 || option > 6);
+        while (option >= 1 || option <= 6);
     }
 
     private void buy(){
-        View.showBuyHeader();
         int option;
         do {
+            View.showBuyHeader();
             View.showGetOption();
             option = View.getOption();
-            switch (option){
-                case 1:
+            if(option >= 1 && option <= 3 ){
+                buyProducts(option);
+            }else if(option == 4){
+                View.showGetBack("Compras");
 
-                    break;
-                case 2:
-                    View.showSaleHeader();
-                    break;
-                case 3:
-                    View.showStockHeader();
-                    break;
-                case 4:
-                    View.showBuyListHeader();
-                    break;
-                default:
-                    View.showInvalidOption();
+                return;
+            }
+            else{
+                View.showInvalidOption();
             }
 
-        }while (option <1 || option > 4);
+        }while (option <= 1 || option >= 4);
 
     }
 
-    public void buyProducts(int option){
+    private void buyProducts(int option){
         Product  product = null;
         switch (option){
             case 1:
@@ -92,7 +88,7 @@ public class Register {
         }
         View.showGetAmount();
         int amout =  View.getAmount();
-        View.showGetPrice();
+         View.showGetPrice();
         double price = View.getPrice();
 
         product.setAmount(amout);
@@ -100,4 +96,13 @@ public class Register {
 
         dataBase.buy(product);
     }
+
+    private void showStock(){
+        View.showStockHeader();
+        View.showItemsStock(this.dataBase.getAll());
+        View.showAnyKey();
+        View.getOption();
+    }
+
+
 }
